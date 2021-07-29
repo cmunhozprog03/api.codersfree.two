@@ -1,0 +1,5 @@
+Client ID: 94070292-0d57-4741-a50e-d6251f5caf57
+Client secret: UYd2cTEuyr7n0PpYjjwrZWlu8h1mW3j27fTk2AFP
+
+Client ID: 940708c2-dbf9-4e8e-990e-7602b551f592
+Client secret: CiXLjgKTeDhfispS0BTrbXxi6VTkRDYBCjtQX61b
