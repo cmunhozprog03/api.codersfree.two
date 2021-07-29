@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -31,17 +36,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:posts',
             'extract' => 'required',
             'body' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'user_id' => 'required|exists:users,id',
-
         ]);
 
-        $post = Post::create($request->all());
+        $user = auth()->user();
+        $data['user_id'] = $user->id;
+
+        $post = Post::create($data);
 
         return PostResource::make($post);
     }
